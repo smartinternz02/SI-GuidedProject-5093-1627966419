@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%; left:45%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Bank Churn Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+
+    <input type="text" name="CreditScore" placeholder="CreditScore" required="required" />
+    <br></br>
+
+    <select name = 'Geo'required="required">
+    <option value="">Select Geography </option>
+    <option value = "France"> France </option>
+    <option value = "Germany"> Germany </option>
+    <option value = "Spain"> Spain </option>
+    </select>
+	     
+    <select name = 'Gen'required="required">
+    <option value="">Select Gender </option>
+    <option value = "Female"> Female </option>
+    <option value = "Male"> Male </option>
+    </select>
+	
+    <br></br>
+    <input type="text" name="Age" placeholder="Age" required="required" />
+    <input type="text" name="Tenure" placeholder="Tenure" required="required" />
+    <input type="text" name="Balance" placeholder="Balance" required="required" />
+    <input type="text" name="NumOfProducts" placeholder="NumOfProducts" required="required" />
+    <input type="text" name="HasCrCard" placeholder="HasCrCard" required="required" />    
+    <input type="text" name="IsActiveMember" placeholder="IsActiveMember" required="required" />
+    <input type="text" name="EstimatedSalary" placeholder="EstimatedSalary" required="required" />
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
